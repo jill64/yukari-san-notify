@@ -7,26 +7,26 @@ class CDKStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props)
 
-    const vpc = new aws_ec2.Vpc(this, 'TsumugiChanTimerVpc', {
+    const vpc = new aws_ec2.Vpc(this, 'YukariSanNotifyVpc', {
       maxAzs: 2
     })
 
-    const cluster = new aws_ecs.Cluster(this, 'TsumugiChanTimerEcsCluster', {
+    const cluster = new aws_ecs.Cluster(this, 'YukariSanNotifyEcsCluster', {
       vpc
     })
 
     const taskDefinition = new aws_ecs.FargateTaskDefinition(
       this,
-      'TsumugiChanTimerTaskDef',
+      'YukariSanNotifyTaskDef',
       {
         memoryLimitMiB: 512,
         cpu: 256
       }
     )
 
-    const container = taskDefinition.addContainer('TsumugiChanTimerContainer', {
-      image: aws_ecs.ContainerImage.fromAsset('dist/tsumugi-chan-timer'),
-      logging: aws_ecs.LogDrivers.awsLogs({ streamPrefix: 'TsumugiChanTimer' }),
+    const container = taskDefinition.addContainer('YukariSanNotifyContainer', {
+      image: aws_ecs.ContainerImage.fromAsset('dist/yukari-san-notify'),
+      logging: aws_ecs.LogDrivers.awsLogs({ streamPrefix: 'YukariSanNotify' }),
       environment: {
         DISCORD_BOT_TOKEN: process.env.DISCORD_BOT_TOKEN!,
         SOLARSYSTEM_API_KEY: process.env.SOLARSYSTEM_API_KEY!
@@ -37,7 +37,7 @@ class CDKStack extends Stack {
       containerPort: 80
     })
 
-    new aws_ecs.FargateService(this, 'TsumugiChanTimerFargateService', {
+    new aws_ecs.FargateService(this, 'YukariSanNotifyFargateService', {
       cluster,
       taskDefinition,
       desiredCount: 1
@@ -47,7 +47,7 @@ class CDKStack extends Stack {
 
 const app = new App()
 
-new CDKStack(app, 'TsumugiChanTimer', {
+new CDKStack(app, 'YukariSanNotify', {
   env: {
     account: env.CDK_DEFAULT_ACCOUNT,
     region: env.CDK_DEFAULT_REGION

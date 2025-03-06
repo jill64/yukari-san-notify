@@ -30,4 +30,4 @@ const exec = (name: string) =>
     )
   ])
 
-await exec('tsumugi-chan-timer')
+await exec('yukari-san-notify')
