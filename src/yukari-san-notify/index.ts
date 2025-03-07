@@ -32,7 +32,7 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
     const embed = new EmbedBuilder()
       .setColor(0xffd3fb)
       .setTitle(
-        `${newState.guild.name} の ${newState.channel?.name} に ${newState.member.displayName}さんが入室しました`
+        `${newState.channel?.name} に ${newState.member.displayName}さんが入室しました`
       )
       .setImage(newState.member.user.displayAvatarURL())
 
