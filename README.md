@@ -4,8 +4,6 @@
 
 <!----- BEGIN GHOST DOCS BADGES ----->
 
-<a href="https://github.com/jill64/yukari-san-notify/actions/workflows/deploy-cdk.yml"><img src="https://github.com/jill64/yukari-san-notify/actions/workflows/deploy-cdk.yml/badge.svg" alt="deploy-cdk.yml" /></a>
-
 <!----- END GHOST DOCS BADGES ----->
 
 🌸 VC Notification bot on Discord with Yuzuki Yukari
